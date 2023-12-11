@@ -142,7 +142,7 @@
                         <p class="mb-4">Lịch sử khám bệnh
                         </p>
                         <div class="container">
-                            <table id="example" class="table table-striped"
+                            <table id="example" 
                                 style="width:100%;background-color: aliceblue;">
                                 <thead>
                                     <tr>
@@ -160,7 +160,7 @@
                                         <td><a href="/tai-lieu/ho-so-benh-an/{{ID}}">{{ID}}</a></td>
                                         <td>{{Date}}</td>
                                         <td>{{Time}}</td>
-                                        <td><a href="/bac-si/{{DoctorID}}-{{DoctorName}}">{{DoctorName}}</a></td>
+                                        <td><a style="color: #000000;" href="/bac-si/{{DoctorID}}-{{DoctorName}}">{{DoctorName}}</a></td>
                                         <td>{{Diagnosis}}</td>
                                         <td>{{AllTotal}}</td>
                                     </tr>
@@ -176,7 +176,7 @@
                         </p>
                         <div class="container">
 
-                            <table id="table_appointment" class="table table-striped"
+                            <table id="table_appointment" 
                                 style="width:100%;background-color: aliceblue;">
                                 <thead>
                                     <tr>
@@ -191,7 +191,7 @@
                                     {{#each appointments}}
                                     <tr>
                                         <td>{{Date}}</td>
-                                        <td><a href="/bac-si/{{ID}}-{{Doctor}}">{{Doctor}}</a></td>
+                                        <td><a style="color: #000000;" href="/bac-si/{{ID}}-{{Doctor}}">{{Doctor}}</a></td>
                                         <td>{{Desc}}</td>
                                         <td>{{Status}}</td>
                                         <td>{{Note}}</td>
@@ -322,7 +322,7 @@ th {
 }
 thead th {
   background-color: #1eb2c5;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 }
 tbody tr:hover {
   background-color: rgba(255, 255, 255, 0.3);

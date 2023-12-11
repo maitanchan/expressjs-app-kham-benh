@@ -1,7 +1,7 @@
-<div class="container">
-<h3 class="text-center mt-2"><b>DANH SÁCH BÁC SĨ</b></h3>
+<div class="container" style="margin-top: 20px;">
+<h3 class="text-center mt-2"><b>Danh sách bác sĩ</b></h3>
     <div class="container">
-	<table  id="example">
+	<table  id="example" >
 	  <thead>
             <tr>
                 <th>Tên bác sĩ</th>
@@ -14,7 +14,7 @@
         <tbody>
             {{#each doctors}}
             <tr>
-                <td ><a href="/bac-si/{{ID}}-{{Name}}">{{Name}}</a></td>
+                <td ><a style="color: #000000;" href="/bac-si/{{ID}}-{{Name}}">{{Name}}</a></td>
                 <td>{{Gender}}</td>
                 <td>{{Specialist}}</td>
                 <td>{{Phone}}</td>
@@ -47,7 +47,7 @@ table {
 }
 th,
 td {
-  padding: 15px;
+  padding: 20px;
   background-color: rgba(255, 255, 255, 0.2);
   color: #000000;
 }

@@ -10,12 +10,12 @@
         </div>
     </div>
 
-    <div class="container-fluid p-3 mb-2 bg-light text-dark my-5 rounded py-5" style=" box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
+    <div class="container-fluid p-3 mb-2 text-dark my-5  py-5 " style=" box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;border-radius:10px">
         <div class="container py-5">
             <div class="row gx-5">
-                <div class="col-lg-6" style="margin-left: 20px;">
-                    <div class="bg-white text-center rounded p-5" style=" box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
-                        <h1 class="mb-4 text-black">Thông tin đặt lịch khám</h1>
+                <div class="col-lg-11" style="margin-left: 55px;">
+                    <div class="bg-white text-center  p-5" style=" box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; border-radius:10px">
+                        <h1 class="mb-4 text-black">Điền thông tin phiếu khám bênh</h1>
                         <form class="px-md-2" action="/tai-lieu/lap-phieu-hen" method="post">
                             <div class="row g-2">
                                 {{!-- Select doctors --}}
@@ -96,8 +96,8 @@
                                 </div>
                                 {{!-- Confirm --}}
                                 <div class="col-sm-6">
-                                    <button class="btn  w-100 py-3" type="submit" style="margin-top: 20px;background-color:#1eb2c5;color:#fff">
-                                        Tạo phiếu hẹn
+                                    <button class="btn  py-3" type="submit" style="margin-top: 20px;background-color:#1eb2c5;color:#fff;width:1020px">
+                                        Submit
                                     </button>
                                 </div>
                                 <div id="status" class="col-sm-12 text-start" style="color: red;">(*) Thông tin bắt buộc
@@ -107,19 +107,10 @@
                     </div>
                 </div>
 
-                <div class="col-lg-5">
-                    <div class="mb-5">
-                        <h1 class="display-3 text-dark"><b>Tạo một phiếu hẹn cho cá nhân</b></h1>
-                    </div>
-                    <p class="text-dark mb-5">Bạn có thể được khám bệnh bởi bác sĩ mà mình mong muốn vào khung giờ hẹn.
-                        Danh sách bác sĩ dưới đây.</p>
-                    <div class="d-flex justify-content-center">
-                        <a class="btn btn-dark rounded-pill py-3 px-5 me-3" href="/tim-kiem/bac-si">Tìm bác sĩ</a>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
+    
 </div>
 
 <style>
@@ -139,5 +130,87 @@
 #desc:hover {
     border-color: #888;
 }
+   body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f8f9fa;
+    }
 
+    .breadcrumb {
+        border-radius: 5px;
+        padding: 1rem;
+    }
+
+    .container-form {
+        background-color: #ffffff;
+            border-radius: 10px;
+
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-top: 2rem;
+    }
+
+    .form-title {
+        color: #343a40;
+        margin-bottom: 2rem;
+    }
+
+    .form-label {
+        color: #495057;
+    }
+
+    .form-control {
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+                border-radius: 10px;
+
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    .form-control:focus {
+        border-color: #1eb2c5;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(30, 178, 197, 0.25);
+    }
+
+    .btn-submit {
+        background-color: #1eb2c5;
+        color: #ffffff;
+        width: 100%;
+        padding: 1rem;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-submit:hover {
+        background-color: #117a8b;
+    }
+
+    #status {
+        color: red;
+    }
+
+    textarea {
+        width: 100%;
+        padding: 1rem;
+        box-sizing: border-box;
+        resize: vertical;
+        border: 1px solid #ced4da;
+               border-radius: 10px;
+
+        font-size: 14px;
+        color: #495057;
+        margin-bottom: 1.5rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+    textarea:hover,
+    textarea:focus {
+        border-color: #1eb2c5;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(30, 178, 197, 0.25);
+    }
 </style>

@@ -24,7 +24,7 @@ section {
 */
 /********** Template CSS **********/
 :root {
-    --primary: #1ecae0;
+    --primary: #1eb2c5;
     --secondary: #354F8E;
     --light: #EFF5F9;
     --dark: #1D2A4D;
@@ -133,7 +133,7 @@ section {
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0, 0, 0, 0.667); 
+    background-color: rgba(0, 0, 0, 0.511); 
     z-index: 1;
 }
 
