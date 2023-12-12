@@ -1,4 +1,4 @@
-<section style="background-color: #eee;">
+<section style="background-color: #ffffff;">
     <div class="container py-5">
         <div class="row">
             <div class="col">
@@ -22,7 +22,7 @@
 
         <div class="row">
             <div class="col-lg-4">
-                <div class="card mb-4">
+                <div class="card mb-4"  style=" box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
                     <div class="card-body text-center">
                         <img src="/img/doctor.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                         <h5 class="my-3">{{u.Name}}</h5>
@@ -30,8 +30,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8">
-                <div class="card mb-4">
+            <div class="col-lg-8" >
+                <div class="card mb-4" style=" box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
@@ -41,7 +41,7 @@
                                 <p class="text-muted mb-0">{{data.Name}}</p>
                             </div>
                         </div>
-                        <hr>
+                        <hr style="visibility: hidden;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Giới tính</p>
@@ -50,7 +50,7 @@
                                 <p class="text-muted mb-0">{{data.Gender}}</p>
                             </div>
                         </div>
-                        <hr>
+                        <hr style="visibility: hidden;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Học vị</p>
@@ -59,7 +59,7 @@
                                 <p class="text-muted mb-0">{{data.Title}}</p>
                             </div>
                         </div>
-                        <hr>
+                         <hr style="visibility: hidden;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Chuyên khoa</p>
@@ -68,7 +68,7 @@
                                 <p class="text-muted mb-0">{{data.Specialist}}</p>
                             </div>
                         </div>
-                        <hr>
+                               <hr style="visibility: hidden;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Điện thoại</p>
@@ -77,7 +77,7 @@
                                 <p class="text-muted mb-0">{{data.Phone}}</p>
                             </div>
                         </div>
-                        <hr>
+                        <hr style="visibility: hidden;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0"><a href="{{data.href}}" target="_blank">Tìm hiểu thêm</a></p>
@@ -151,7 +151,7 @@
         </div>
         {{/ifEquals}}
         <div class="row">
-            <div class="card">
+            <div class="card"  style=" box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
                 <h4 class="text-center mt-4">Lịch làm việc</h4>
                 <div id="WorkSchedule">
                     {{#ifEquals data.error "empty"}}

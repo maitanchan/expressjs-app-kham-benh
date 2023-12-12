@@ -1,4 +1,4 @@
-<section style="background-color: #eee;">
+<section style="background-color: #ffffff;">
     <div class="row">
         <div class="alert alert-success alert-dismissible fade show {{editSuccess}} mb-0" role="alert">
             <strong>Chỉnh sửa thông tin cá nhân thành công.</strong> Bạn có thể tự kiểm tra lại.
@@ -31,24 +31,21 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4">
-                <div class="card mb-4">
+            <div class="col-lg-4" >
+                <div class="card mb-4"  style=" box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
                     <div class="card-body text-center">
                         <img src="{{u.src}}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                         <h5 class="my-3">{{u.Name}}</h5>
                         <p class="text-muted mb-1">@{{u.Username}}</p>
                         <p class="text-muted mb-4">{{u.Address}}</p>
-                        <button type="button"><a data-bs-toggle="modal" data-bs-target="#editProfileModal"><i
-                                    class="fas fa-edit"></i></a></button>
+                        <button type="button"><a data-bs-toggle="modal" data-bs-target="#editProfileModal"><i class="bi bi-pencil-square"></i></a></button>
                     </div>
                 </div>
-                <div class="card mb-4 mb-lg-0">
-
-                </div>
+              
             </div>
             <div class="col-lg-8">
-                <div class="card mb-4">
-                    <div class="card-body">
+                <div class="card mb-4"  style=" box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
+                    <div class="card-body" >
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Họ tên</p>
@@ -57,7 +54,7 @@
                                 <p class="text-muted mb-0">{{u.Name}}</p>
                             </div>
                         </div>
-                        <hr>
+                       <hr style="visibility: hidden;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Ngày sinh</p>
@@ -66,7 +63,7 @@
                                 <p class="text-muted mb-0">{{u.DOB}}</p>
                             </div>
                         </div>
-                        <hr>
+                       <hr style="visibility: hidden;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Giới tính</p>
@@ -75,7 +72,7 @@
                                 <p class="text-muted mb-0">{{u.Gender}}</p>
                             </div>
                         </div>
-                        <hr>
+                       <hr style="visibility: hidden;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Email</p>
@@ -84,7 +81,7 @@
                                 <p class="text-muted mb-0">{{u.Email}}</p>
                             </div>
                         </div>
-                        <hr>
+                       <hr style="visibility: hidden;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Điện thoại</p>
@@ -93,7 +90,7 @@
                                 <p class="text-muted mb-0">{{u.Phone}}</p>
                             </div>
                         </div>
-                        <hr>
+                       <hr style="visibility: hidden;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Địa chỉ</p>
@@ -102,7 +99,7 @@
                                 <p class="text-muted mb-0">{{u.Address}}</p>
                             </div>
                         </div>
-                        <hr>
+                       <hr style="visibility: hidden;">
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0"><a id="btnChangePassword" class="btn btn-secondary">Đổi mật khẩu</a></p>
@@ -137,8 +134,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mb-4">
-                    <div class="card-body">
+                <div class="card mb-4" style=" box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;" >
+                    <div class="card-body" >
                         <p class="mb-4">Lịch sử khám bệnh
                         </p>
                         <div class="container">
@@ -170,7 +167,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mb-4">
+                <div class="card mb-4" style=" box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;">
                     <div class="card-body">
                         <p class="mb-4">Phiếu hẹn khám bệnh
                         </p>
@@ -180,7 +177,8 @@
                                 style="width:100%;background-color: aliceblue;">
                                 <thead>
                                     <tr>
-                                        <th>Ngày khám</th>
+                                        <th>Ngày </th>
+                                        <th>Giờ </th>
                                         <th>Bác sĩ</th>
                                         <th>Nội dung </th>
                                         <th>Trạng thái</th>
@@ -191,6 +189,7 @@
                                     {{#each appointments}}
                                     <tr>
                                         <td>{{Date}}</td>
+                                        <td>{{Time}}</td>
                                         <td><a style="color: #000000;" href="/bac-si/{{ID}}-{{Doctor}}">{{Doctor}}</a></td>
                                         <td>{{Desc}}</td>
                                         <td>{{Status}}</td>

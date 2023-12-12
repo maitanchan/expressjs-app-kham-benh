@@ -15,12 +15,12 @@
             <div class="row gx-5">
                 <div class="col-lg-11" style="margin-left: 55px;">
                     <div class="bg-white text-center  p-5" style=" box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; border-radius:10px">
-                        <h1 class="mb-4 text-black">Điền thông tin phiếu khám bênh</h1>
+                        <h1 class="mb-4 text-black">Điền thông tin phiếu khám bệnh</h1>
                         <form class="px-md-2" action="/tai-lieu/lap-phieu-hen" method="post">
                             <div class="row g-2">
                                 {{!-- Select doctors --}}
                                 <div class="col-12">
-                                    <select class="form-select bg-light" name="Doctor" required>
+                                    <select class="form-select bg-light" style="border-radius: 10px;" name="Doctor" required>
                                         <option value="">Chọn bác sĩ &#8727;</option>
                                         {{#each doctors}}
                                         <option value='{"ID":"{{ID}}", "Name":"{{Name}}"}'>{{Name}}</option>
@@ -96,7 +96,7 @@
                                 </div>
                                 {{!-- Confirm --}}
                                 <div class="col-sm-6">
-                                    <button class="btn  py-3" type="submit" style="margin-top: 20px;background-color:#1eb2c5;color:#fff;width:1020px">
+                                    <button class="btn  py-3" type="submit" style="margin-top: 20px;background-color:#1eb2c5;color:#fff;width:1020px;border-radius:10px">
                                         Submit
                                     </button>
                                 </div>
