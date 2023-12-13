@@ -27,19 +27,27 @@
               <p class="text-danger d-{{errWrongPassword}}">Mật khẩu không chính xác</p>
 
               {{!--Role--}}
-              <div class="form-group mb-4">
-                <label>Đăng nhập với tư cách: </label>
-                <select class="form-select form-inline" aria-label="Default select example" name="role">
+           <div class="form-group mb-4">
+              <label>Đăng nhập với tư cách: </label>
+              <select class="form-select form-inline" aria-label="Default select example" name="role">
                   {{#ifEquals role "patient"}}
                   <option value="patient" selected>Bệnh nhân</option>
                   <option value="doctor">Bác sĩ</option>
+                  <option value="admin">Quản trị viên</option> <!-- Thêm tùy chọn admin -->
                   {{/ifEquals}}
                   {{#ifEquals role "doctor"}}
                   <option value="patient">Bệnh nhân</option>
                   <option value="doctor" selected>Bác sĩ</option>
+                  <option value="admin">Quản trị viên</option> <!-- Thêm tùy chọn admin -->
                   {{/ifEquals}}
-                </select>
-              </div>
+                  {{#ifEquals role "admin"}}
+                  <option value="patient">Bệnh nhân</option>
+                  <option value="doctor">Bác sĩ</option>
+                  <option value="admin" selected>Quản trị viên</option> <!-- Thêm tùy chọn admin -->
+                  {{/ifEquals}}
+              </select>
+          </div>
+
 
               {{!-- Button submit --}}
               <button type="submit" class="btn btn-success btn-lg mb-4">Đăng nhập</button>

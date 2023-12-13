@@ -17,45 +17,17 @@
                 <div class="d-flex">
                     <div id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            {{#ifEquals role "doctor"}}
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" data-bs-toggle="dropdown" aria-expanded="false" href="#">Chỉnh
-                                    sửa</a>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                                    {{#ifEquals role "doctor"}}
-                                    <li><a class="dropdown-item" href="/chinh-sua/thuoc-dich-vu">Thuốc/Dịch vụ</a></li>
-                                    <li><a class="dropdown-item" href="/chinh-sua/so-benh-nhan-toi-da">Số bệnh nhân tối
-                                            đa trong ngày</a></li>
-                                    {{/ifEquals}}
-                                </ul>
-                            </li>
-                            {{/ifEquals}}
-                            <li class="nav-item dropdown">
-                               
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                                    {{#ifEquals role "doctor"}}
-                                    <li><a class="dropdown-item" href="/tai-lieu/xuat-hoa-don">Lập phiếu khám bệnh</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="/tai-lieu/bao-cao-doanh-thu">Lập báo cáo doanh
-                                            thu</a></li>
-                                    <li><a class="dropdown-item" href="/tai-lieu/bao-cao-thuoc">Lập báo cáo thuốc</a>
-                                    </li>
-                                    <li><a class="dropdown-item" href="/tai-lieu/danh-sach-kham-benh">Danh sách khám
-                                            bệnh</a></li>
-                                    {{/ifEquals}}
-                                    {{#ifEquals role "patient"}}
-                                    <li><a class="dropdown-item" href="/tai-lieu/lap-phieu-hen">Đặt lịch hẹn</a></li>
-                                    {{/ifEquals}}
-                                </ul>
-                            </li>
+                          
                             <li class="nav-item dropdown me-2">
                                 <a class="nav-link" data-bs-toggle="dropdown" aria-expanded="false" href="#">Tra cứu thông tin</a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                                    <li><a class="dropdown-item" href="/tim-kiem/thuoc">Thuốc</a></li>
-                                    <li><a class="dropdown-item" href="/tim-kiem/bac-si">Bác sĩ</a></li>
-                                    <li><a class="dropdown-item" href="/tim-kiem/dich-vu">Dịch vụ</a></li>
+                                    <li><a class="dropdown-item" href="/tim-kiem/thuoc"> Danh sách thuốc</a></li>
+                                    <li><a class="dropdown-item" href="/tim-kiem/bac-si">Danh sách bác sĩ</a></li>
+                                    <li><a class="dropdown-item" href="/tim-kiem/dich-vu">Danh sách dịch vụ</a></li>
                                     {{#ifEquals role "doctor"}}
-                                    <li><a class="dropdown-item" href="/tim-kiem/benh-nhan">Bệnh nhân</a></li>
+                                    <li><a class="dropdown-item" href="/tim-kiem/benh-nhan"> Danh sách bệnh nhân</a></li>
+                                    <li><a class="dropdown-item" href="/tai-lieu/danh-sach-kham-benh">Danh sách khám
+                                            bệnh</a></li>
                                     <li><a class="dropdown-item" href="/tim-kiem/ho-so-benh-an">Hồ sơ bệnh án</a></li>
                                     {{/ifEquals}}
                                 </ul>
@@ -72,6 +44,7 @@
                                     d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                             </svg>
                         </a>
+                           {{#ifEquals role "patient"}}
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                             <li>
                                 <a class="dropdown-item {{display1}}" href="/dang-nhap">Đăng nhập</a>
@@ -79,6 +52,26 @@
                                 <a class="dropdown-item {{display2}}" href="/dang-xuat">Đăng xuất</a>
                             </li>
                         </ul>
+                            {{/ifEquals}}
+
+                             {{#ifEquals role "doctor"}}
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                            <li>
+                                <a class="dropdown-item {{display1}}" href="/dang-nhap">Đăng nhập</a>
+                                <a class="dropdown-item {{display2}}" href="/tai-khoan">Tài khoản</a>
+                                <a class="dropdown-item {{display2}}" href="/dang-xuat">Đăng xuất</a>
+                            </li>
+                        </ul>
+                            {{/ifEquals}}
+
+                             {{#ifEquals role "admin"}}
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                            <li>
+                               
+                                <a class="dropdown-item {{display2}}" href="/dang-xuat">Đăng xuất</a>
+                            </li>
+                        </ul>
+                            {{/ifEquals}}
                     </div>
                 </div>
                 <div class="text-white d-flex justify-content-end">

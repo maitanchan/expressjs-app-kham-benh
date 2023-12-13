@@ -1,6 +1,7 @@
 const drugM = require('../model/Drugs.m');
 const doctorM = require('../model/Doctors.m');
 const serviceM = require('../model/Services.m');
+const sickM = require('../model/Sicks.m');
 const userM = require('../model/Users.m');
 const RecordsM = require('../model/Records.m');
 
@@ -99,6 +100,48 @@ exports.viewAllServices = async (req, res, next) => {
         } else {
 
             res.render('search-service', { services: rs, display1: "d-block", display2: "d-none", role: role });
+
+        }
+
+    } catch (err) {
+
+        next(err);
+
+    }
+
+}
+
+exports.viewAllSicks = async (req, res, next) => {
+
+    try {
+
+        const rs = await sickM.getAll();
+
+        let role = "patient";
+
+        if (req.session.Doctor) {
+
+            role = "doctor";
+
+        }
+
+        var info = "";
+
+        if (req.session.info) {
+
+            info = req.session.info;
+
+            delete req.session.info;
+
+        }
+
+        if (req.session.Username) {
+
+            res.render('search-sick', { sicks: rs, display1: "d-none", display2: "d-block", role: role, info: info });
+
+        } else {
+
+            res.render('search-sick', { sicks: rs, display1: "d-block", display2: "d-none", role: role });
 
         }
 

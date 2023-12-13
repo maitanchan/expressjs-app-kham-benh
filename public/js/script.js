@@ -66,7 +66,7 @@ $(function () {
     });
     var table = $('#example').DataTable({
         lengthChange: false,
-        // buttons: ['copy', 'excel', 'pdf', 'colvis']
+        buttons: ['copy', 'excel', 'pdf', 'colvis']
     });
 
     table.buttons().container()
@@ -74,7 +74,7 @@ $(function () {
 
     var table1 = $('#table_appointment').DataTable({
         lengthChange: false,
-        // buttons: ['copy', 'excel', 'pdf', 'colvis']
+        buttons: ['copy', 'excel', 'pdf', 'colvis']
     });
 
     table1.buttons().container()
@@ -179,6 +179,20 @@ $(function () {
                 console.log(data);
             });
     })
+
+    $('.changeNote').on('change', function () {
+        $.post("/tai-lieu/ghi-chu-phieu-hen",
+            {
+                ID: $(this).attr('id'),
+                Note: $(this).val()
+            },
+            function (data, status) {
+                console.log(data);
+            }
+        );
+    });
+
+
     $('input[list="patients"]').on('input', onInput);
     $("#btnPrint").on("click", function () {
         console.log('print');
@@ -618,3 +632,4 @@ function autoGenerate1() {
         $(this).attr('width', val.length + 1);
     });
 }
+

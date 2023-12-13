@@ -38,5 +38,9 @@ module.exports = {
     changeStatus: async (ID, Status) => {
         const rs = await db.collection('Appointments').updateOne({ _id: new ObjectID(ID) }, { $set: { Status: Status } });
         return rs;
+    },
+    changeNote: async (ID, Note) => {
+        const rs = await db.collection('Appointments').updateOne({ _id: new ObjectID(ID) }, { $set: { Note: Note } });
+        return rs;
     }
 }

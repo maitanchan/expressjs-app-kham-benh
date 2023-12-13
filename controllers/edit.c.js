@@ -1,5 +1,6 @@
 const DrugsM = require("../model/Drugs.m");
 const ServicesM = require("../model/Services.m");
+const SicksM = require("../model/Sicks.m");
 const fs = require('fs');
 const { dirname } = require("path");
 const DoctorsM = require("../model/Doctors.m");
@@ -200,6 +201,52 @@ exports.postEditService = async (req, res, next) => {
 
 }
 
+exports.postEditSick = async (req, res, next) => {
+
+    let role = "patient";
+
+    if (req.session.Doctor) {
+
+        role = "doctor";
+
+    }
+
+    if (!req.session.Doctor) {
+
+        if (req.session.Username) {
+
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+
+        } else {
+
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+
+        }
+
+    }
+
+    try {
+
+        var ID = req.params.ID;
+
+        var data = req.body;
+
+        data.ID = ID;
+
+        await SicksM.update(ID, data);
+
+        req.session.info = "edit";
+
+        res.redirect('/tim-kiem/benh-ly');
+
+    } catch (err) {
+
+        next(err);
+
+    }
+
+}
+
 exports.deleteService = async (req, res, next) => {
 
     let role = "patient";
@@ -233,6 +280,48 @@ exports.deleteService = async (req, res, next) => {
         req.session.info = "delete";
 
         res.redirect('/tim-kiem/dich-vu');
+
+    } catch (err) {
+
+        next(err);
+
+    }
+
+}
+
+exports.deleteSick = async (req, res, next) => {
+
+    let role = "patient";
+
+    if (req.session.Doctor) {
+
+        role = "doctor";
+
+    }
+
+    if (!req.session.Doctor) {
+
+        if (req.session.Username) {
+
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+
+        } else {
+
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+
+        }
+
+    }
+
+    try {
+
+        var ID = req.params.ID;
+
+        await SicksM.delete(ID);
+
+        req.session.info = "delete";
+
+        res.redirect('/tim-kiem/benh-ly');
 
     } catch (err) {
 

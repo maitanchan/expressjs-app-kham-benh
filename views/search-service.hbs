@@ -25,9 +25,9 @@
                 <th>ID</th>
                 <th>Tên dịch vụ</th>
                 <th>Giá</th>
-                {{#ifEquals role "doctor"}}
-                <th></th>
-                {{/ifEquals}}
+                {{!-- {{#ifEquals role "doctor"}}
+                <th>Hành động</th>
+                {{/ifEquals}} --}}
             </tr>
         </thead>
         <tbody>
@@ -36,7 +36,7 @@
                 <td>{{ID}}</td>
                 <td>{{ServiceName}}</td>
                 <td>{{Price}}</td>
-                {{#ifEquals ../role "doctor"}}
+                {{!-- {{#ifEquals ../role "doctor"}}
                 <td>
                     <div class="d-flex">
                         <a type="button" class="d-block me-2" data-bs-toggle="modal" data-bs-target="#editServiceModal{{ID}}">
@@ -47,7 +47,7 @@
                         </a>
                     </div>
                 </td>
-                {{/ifEquals}}
+                {{/ifEquals}} --}}
             </tr>
             {{/each}}
         

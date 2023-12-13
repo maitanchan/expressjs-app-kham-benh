@@ -2,6 +2,7 @@ const DoctorsM = require('../model/Doctors.m');
 const UsersM = require('../model/Users.m');
 const DrugsM = require('../model/Drugs.m');
 const ServicesM = require('../model/Services.m');
+const SicksM = require('../model/Sicks.m');
 const RecordsM = require('../model/Records.m');
 const AppointmentM = require('../model/Appointment.m');
 const PatientsInDayM = require('../model/PatientsInDay.m');
@@ -173,11 +174,43 @@ exports.postAppointment = async (req, res, next) => {
 
 }
 
+exports.postSick = async (req, res, next) => {
+
+    try {
+
+        await SicksM.add(req.body);
+
+        res.redirect('/tim-kiem/benh-ly');
+
+    } catch (err) {
+
+        next(err);
+
+    }
+
+}
+
 exports.changeStatus = async (req, res, next) => {
 
     try {
 
         const rs = await AppointmentM.changeStatus(req.body.ID, req.body.Status);
+
+        res.send('updated');
+
+    } catch (err) {
+
+        next(err);
+
+    }
+
+}
+
+exports.changeNote = async (req, res, next) => {
+
+    try {
+
+        const rs = await AppointmentM.changeNote(req.body.ID, req.body.Note);
 
         res.send('updated');
 

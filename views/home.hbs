@@ -6,11 +6,31 @@
                 <h5 class="d-inline-block border-bottom border-1"
                     style="border-color:#fff !important;color:#fff;z-index:9999 "> <span class="name-title">Welcome to An Tam Hospital</span></h5>
                 <h3 class="display-1 text-white mb-md-4">An toàn của người bệnh là mục tiêu phấn đấu của chúng tôi</h3>
+                {{#ifEquals role "patient"}}
                 <div class="pt-2" style="display: flex; column-gap:30px"  >
                     <a href="/tai-lieu/lap-phieu-hen"
                         ><button class="button-29"  role="button">Đặt lịch khám</button></a>
                  
                 </div>
+               {{/ifEquals}}
+
+                {{#ifEquals role "doctor"}}
+                <div class="pt-2" style="display: flex; column-gap:30px"  >
+                    <a href="/tim-kiem/benh-ly"
+                        ><button class="button-29"  role="button">Quản lý bệnh lý</button></a>
+                 
+                </div>
+               {{/ifEquals}}
+
+               
+                {{#ifEquals role "admin"}}
+                <div class="pt-2" style="display: flex; column-gap:30px"  >
+                    <a href="/tai-lieu/lap-phieu-hen"
+                        ><button class="button-29"  role="button">Quản lý bác sĩ</button></a>
+                 
+                </div>
+               {{/ifEquals}}
+                
                 
             </div>
         </div>

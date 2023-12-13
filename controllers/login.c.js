@@ -1,5 +1,6 @@
 const userM = require('../model/Users.m');
 const doctorM = require('../model/Doctors.m');
+const adminM = require('../model/Admin.m');
 const CryptoJS = require('crypto-js');
 const hashLength = 64;
 
@@ -63,7 +64,7 @@ exports.check = async (req, res, next) => {
 
             })
 
-        } else {
+        } else if (user.role == "doctor") {
 
             doctorM.getByUsername(user.Username).then(rs => {
 
@@ -97,7 +98,22 @@ exports.check = async (req, res, next) => {
 
             })
 
+        } else if (user.role == "admin") {
+            adminM.getByUsername(user.Username).then(rs => {
+                if (rs.length === 0 || rs[0].Password !== user.Password) {
+                    res.render('login', { errWrongPassword: "block", errWrongUsername: "none", Username: user.Username, Password: user.Password, display1: "d-block", display2: "d-none", role: user.role });
+                } else {
+                    // Thiết lập session và chuyển hướng đến trang chính
+                    req.session.Username = rs[0].Username;
+                    req.session.Name = rs[0].Name;
+                    req.session.Admin = true;
+                    req.session.Patient = false; // Đảm bảo không có vai trò Patient
+                    req.session.Doctor = false; // Đảm bảo không có vai trò Doctor
+                    res.redirect('/');
+                }
+            });
         }
+
 
     } catch (err) {
 

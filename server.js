@@ -116,11 +116,19 @@ app.use('/chinh-sua', EditRouter);
 
 
 app.get('/', async (req, res, next) => {
+
     const doctors = await doctorM.getAll();
+
     let role = "patient";
+
     if (req.session.Doctor) {
         role = "doctor";
     }
+
+    if (req.session.Admin) {
+        role = "admin";
+    }
+
     if (req.session.Username) {
         res.render('home', { display1: "d-none", display2: "d-block", doctors: doctors, role: role });
     }
