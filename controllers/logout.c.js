@@ -8,6 +8,8 @@ exports.logout = async (req, res, next) => {
 
         delete req.session.Doctor;
 
+        delete req.session.Admin;
+
         res.redirect('/dang-nhap');
 
     } catch (err) {

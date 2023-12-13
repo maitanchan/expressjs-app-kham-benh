@@ -135,16 +135,16 @@
             <div class="modal-body">
                 <form class="px-md-2" id="editServiceForm" action="/tai-lieu/them-benh-ly" method="POST">
                     {{!-- Drug name input --}}
-                      <div class="form-floating mb-4">
-                        <input type="number" id="ID" class="form-control" name="ID"
-                            value="" required />
-                        <label class="form-label" for="ID">ID</label>
-                    </div>
-                    <div class="form-floating mb-4">
-                        <input type="text" id="SickName" class="form-control" name="SickName"
-                            value="" required />
-                        <label class="form-label" for="SickName">Tên bệnh lý</label>
-                    </div>
+                     <div class="form-floating mb-4">
+    <input type="text" id="ID" class="form-control" name="ID" value="" />
+
+    <label class="form-label" for="ID">Mã bệnh lý</label>
+</div>
+<div class="form-floating mb-4">
+    <input type="text" id="SickName" class="form-control" name="SickName" value="" required />
+
+    <label class="form-label" for="SickName">Tên bệnh lý</label>
+</div>
                     <div class="form-floating mb-4">
                         <input type="text" id="Symptom" class="form-control" name="Symptom"
                             value="" required />
@@ -217,3 +217,28 @@ tbody td:hover:before {
 }
 
 </style>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    // Sử dụng jQuery để xử lý sự kiện khi nhập liệu vào trường Tên bệnh lý
+    $(document).ready(function () {
+        $('#SickName').on('input', function () {
+            // Lấy giá trị từ trường Tên bệnh lý
+            var sickNameValue = $(this).val();
+            
+            // Chuyển đổi giá trị thành slug và cập nhật trường Mã bệnh lý
+            var slugValue = slugify(sickNameValue);
+            $('#ID').val(slugValue);
+        });
+    });
+
+    // Hàm chuyển đổi chuỗi thành slug
+    function slugify(text) {
+        return text.toString().toLowerCase()
+            .replace(/\s+/g, '-')           // Thay thế khoảng trắng bằng dấu gạch ngang
+            .replace(/[^\w\-]+/g, '')       // Xóa các ký tự không phải chữ cái, số, dấu gạch ngang
+            .replace(/\-\-+/g, '-')         // Thay thế nhiều dấu gạch ngang liên tiếp bằng một dấu gạch ngang
+            .replace(/^-+/, '')             // Loại bỏ dấu gạch ngang ở đầu chuỗi
+            .replace(/-+$/, '');            // Loại bỏ dấu gạch ngang ở cuối chuỗi
+    }
+</script>
