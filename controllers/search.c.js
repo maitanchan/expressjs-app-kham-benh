@@ -42,6 +42,7 @@ exports.viewAllDoctors = async (req, res, next) => {
     try {
 
         const rs = await doctorM.getAll();
+        const rs2 = await sickM.getAll();
 
         let role = "patient";
 
@@ -51,13 +52,19 @@ exports.viewAllDoctors = async (req, res, next) => {
 
         }
 
+        if (req.session.Admin) {
+
+            role = "admin";
+
+        }
+
         if (req.session.Username) {
 
-            res.render('search-doctor', { doctors: rs, display1: "d-none", display2: "d-block", role: role });
+            res.render('search-doctor', { doctors: rs, sicks: rs2, display1: "d-none", display2: "d-block", role: role });
 
         } else {
 
-            res.render('search-doctor', { doctors: rs, display1: "d-block", display2: "d-none", role: role });
+            res.render('search-doctor', { doctors: rs, sicks: rs2, display1: "d-none", display2: "d-block", role: role });
 
         }
 
@@ -68,6 +75,7 @@ exports.viewAllDoctors = async (req, res, next) => {
     }
 
 }
+
 
 exports.viewAllServices = async (req, res, next) => {
 

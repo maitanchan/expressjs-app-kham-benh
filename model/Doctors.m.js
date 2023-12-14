@@ -1,5 +1,18 @@
 const { db } = require('../model/Database.m');
 module.exports = {
+    add: async (data) => {
+        const rs = await db.collection('Doctors').insertOne({
+            Name: data.Name,
+            Gender: data.Gender,
+            Specialist: data.Specialist,
+            Phone: data.Phone,
+            Title: data.Title,
+            ID: data.ID,
+            ID_Sick: data.Sick.ID,
+            Sick: data.SickName,
+        });
+        return rs;
+    },
     getAll: async () => {
         const rs = await db.collection('Doctors').find({}).toArray();
         return rs;
@@ -16,7 +29,10 @@ module.exports = {
         const rs = await db.collection('Doctors').find({ Username: Username }).toArray();
         return rs;
     },
-    update: async (user, data) => {
-        await db.collection('Doctors').updateOne({ Username: user }, { $set: data }, { upsert: true });
+    update: async (ID, data) => {
+        await db.collection('Doctors').updateOne({ ID: ID }, { $set: data }, { upsert: true });
+    },
+    delete: async (ID) => {
+        await db.collection('Doctors').deleteOne({ ID: ID });
     }
 }

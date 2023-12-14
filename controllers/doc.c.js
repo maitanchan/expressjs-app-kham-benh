@@ -152,6 +152,8 @@ exports.getAppointment = async (req, res, next) => {
         next(err);
     }
 }
+
+
 exports.postAppointment = async (req, res, next) => {
 
     try {
@@ -165,6 +167,24 @@ exports.postAppointment = async (req, res, next) => {
         await AppointmentM.add(req.body);
 
         res.redirect('/');
+
+    } catch (err) {
+
+        next(err);
+
+    }
+
+}
+
+exports.postDoctor = async (req, res, next) => {
+
+    try {
+
+        req.body.Sick = JSON.parse(req.body.Sick);
+
+        await DoctorsM.add(req.body);
+
+        res.redirect('/tim-kiem/bac-si');
 
     } catch (err) {
 

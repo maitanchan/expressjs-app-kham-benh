@@ -247,6 +247,71 @@ exports.postEditSick = async (req, res, next) => {
 
 }
 
+exports.postEditDoctor = async (req, res, next) => {
+
+    let role = "patient";
+
+    if (req.session.Admin) {
+
+        role = "admin";
+
+    }
+
+    if (!req.session.Admin) {
+
+        if (req.session.Username) {
+
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+
+        } else {
+
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+
+        }
+
+    }
+
+    try {
+
+        var ID = req.params.ID;
+
+        var data = req.body;
+
+        data.ID = ID;
+
+        await DoctorsM.update(ID, data);
+
+        req.session.info = "edit";
+
+        res.redirect('/tim-kiem/bac-si');
+
+    } catch (err) {
+
+        next(err);
+
+    }
+
+}
+
+exports.getAllSicks = async (req, res, next) => {
+
+    try {
+
+        const sicks = await SicksM.getAll();
+
+        // res.json(sicks)
+
+        res.render('search-doctor', { sicks: sicks, display1: "d-block", display2: "d-none" });
+
+    } catch (err) {
+
+        next(err);
+
+    }
+
+}
+
+
 exports.deleteService = async (req, res, next) => {
 
     let role = "patient";
@@ -322,6 +387,47 @@ exports.deleteSick = async (req, res, next) => {
         req.session.info = "delete";
 
         res.redirect('/tim-kiem/benh-ly');
+
+    } catch (err) {
+
+        next(err);
+
+    }
+
+}
+exports.deleteDoctor = async (req, res, next) => {
+
+    let role = "patient";
+
+    if (req.session.Admin) {
+
+        role = "admin";
+
+    }
+
+    if (!req.session.Admin) {
+
+        if (req.session.Username) {
+
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+
+        } else {
+
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+
+        }
+
+    }
+
+    try {
+
+        var ID = req.params.ID;
+
+        await DoctorsM.delete(ID);
+
+        req.session.info = "delete";
+
+        res.redirect('/tim-kiem/bac-si');
 
     } catch (err) {
 
