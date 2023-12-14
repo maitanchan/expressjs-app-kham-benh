@@ -9,7 +9,7 @@ module.exports = {
             Title: data.Title,
             ID: data.ID,
             ID_Sick: data.Sick.ID,
-            Sick: data.SickName,
+            Sick: data.Sick.SickName,
         });
         return rs;
     },

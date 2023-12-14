@@ -71,7 +71,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Chỉnh sửa thông tin bệnh lý</h5>
+                <h5 class="modal-title">Chỉnh sửa thông tin bác sĩ</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -86,17 +86,17 @@
                          <label style="margin-bottom: 50px; margin-left: 10px;"
                                             class="form-check-label text-black" for="male">Nam</label>
                        <input style="margin-bottom: 10px;" class="form-check-input bg-light" type="radio"
-                                            name="Gender" id="male" value="Nam" {{#ifEquals Gender "Nam"}}checked{{/ifEquals}}>
+                                            name="Gender" id="male" value="Nam" {{#ifEquals Gender "Nam"}}checked{{/ifEquals}} required>
                                        
-                                        <input style="margin-bottom: 10px; margin-left: 50px;"
-                                            class="form-check-input bg-light" type="radio" name="Gender" id="female"
-                                            value="Nữ"{{#ifEquals Gender "Nữ"}}checked{{/ifEquals}}>
-                                        <label style="margin-bottom: 50px; margin-left:80px" class="form-check-label text-black"
-                                            for="female">Nữ</label>
+                        <input style="margin-bottom: 10px; margin-left: 50px;"
+                            class="form-check-input bg-light" type="radio" name="Gender" id="female"
+                            value="Nữ"{{#ifEquals Gender "Nữ"}}checked{{/ifEquals}} required>
+                        <label style="margin-bottom: 50px; margin-left:80px" class="form-check-label text-black"
+                            for="female">Nữ</label>
                     </div>
                     <div class="form-floating mb-4">
            
-                              <select class="form-select "  name="Sick" >
+                              <select class="form-select "  name="Sick"  required>
                                  <option value="">{{ Sick }}</option>
                                   {{#each ../sicks}}
                                   <option  value="{{SickName}}">{{SickName}}</option>
@@ -135,18 +135,18 @@
 </div>
 
 
-{{!-- <!-- Modal -->
+<!-- Modal -->
 <div class="modal fade" id="deleteServiceModal{{ID}}" tabindex="-1" aria-labelledby="deleteServiceModal{{ID}}"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Xóa bệnh lý</h5>
+                <h5 class="modal-title">Xóa bác sĩ</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                Bạn có chắc chắn muốn xóa dịch vụ <i>{{SickName}}</i>?
-                <form class="px-md-2" id="deleteServiceForm{{ID}}" action="/chinh-sua/benh-ly/xoa/{{ID}}" method="POST">
+                Bạn có chắc chắn muốn xóa dịch vụ <i>{{Name}}</i>?
+                <form class="px-md-2" id="deleteServiceForm{{ID}}" action="/chinh-sua/bac-si/xoa/{{ID}}" method="POST">
                 </form>
             </div>
             <div class="modal-footer">
@@ -155,10 +155,84 @@
             </div>
         </div>
     </div>
-</div> --}}
+</div>
 {{/each}}
 
+<div class="modal fade" id="add" tabindex="-1" aria-labelledby="add"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thêm bác si</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="px-md-2" id="editServiceForm" action="/tai-lieu/them-bac-si" method="POST">
+                    {{!-- Drug name input --}}
+                     <div class="form-floating mb-4">
+                        <input type="text" id="ID" class="form-control" name="ID" value="" readonly />
 
+                       <label class="form-label" for="ID">Mã bác sĩ</label>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input type="text" id="NameDoctor" class="form-control" name="Name" value="" required />
+
+                        <label class="form-label" for="Name">Tên bác sĩ</label>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        
+                         <label style="margin-bottom: 50px; margin-left: 10px;"
+                                            class="form-check-label text-black" for="male">Nam</label>
+                       <input style="margin-bottom: 10px;" class="form-check-input bg-light" type="radio"
+                                            name="Gender" id="male" value="Nam" required >
+                                       
+                        <input style="margin-bottom: 10px; margin-left: 50px;"
+                            class="form-check-input bg-light" type="radio" name="Gender" id="female"
+                            value="Nữ" required>
+                        <label style="margin-bottom: 50px; margin-left:80px" class="form-check-label text-black"
+                            for="female">Nữ</label>
+                    </div>
+
+                     <div class="form-floating mb-4">
+           
+                              <select class="form-select "  name="Sick" required >
+                                  {{#each sicks}}
+                                   <option value='{"ID":"{{ID}}", "SickName":"{{SickName}}"}'>{{SickName}}</option>
+                                  {{/each}}
+                              </select>
+                              <label class="form-label" for="Name{{ID}}">Tên bệnh lý</label>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input type="text" id="Specialist" class="form-control" name="Specialist"
+                            value="" required />
+                        <label class="form-label" for="Specialist">Chuyên khoa </label>
+                    </div>
+
+                   <div class="form-floating mb-4">
+                        <input type="text" id="Phone" class="form-control" name="Phone"
+                            value="" required />
+                        <label class="form-label" for="Phone">Số điện thoại</label>
+                    </div>
+
+                    <div class="form-floating mb-4">
+                        <input type="text" id="Title" class="form-control" name="Title"
+                            value="" required />
+                        <label class="form-label" for="Title">Học vị</label>
+                    </div>
+                    {{!-- Unit input --}}
+                     <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="submit" class="btn btn-primary" >Xác nhận</button>
+            </div>
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</div>
 <style>
     html,
 body {
@@ -209,3 +283,28 @@ tbody td:hover:before {
 }
 
 </style>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    // Sử dụng jQuery để xử lý sự kiện khi nhập liệu vào trường Tên bệnh lý
+    $(document).ready(function () {
+        $('#NameDoctor').on('input', function () {
+            // Lấy giá trị từ trường Tên bệnh lý
+            var sickNameValue = $(this).val();
+            
+            // Chuyển đổi giá trị thành slug và cập nhật trường Mã bệnh lý
+            var slugValue = slugify(sickNameValue);
+            $('#ID').val(slugValue);
+        });
+    });
+
+    // Hàm chuyển đổi chuỗi thành slug
+    function slugify(text) {
+        return text.toString().toLowerCase()
+            .replace(/\s+/g, '-')           // Thay thế khoảng trắng bằng dấu gạch ngang
+            .replace(/[^\w\-]+/g, '')       // Xóa các ký tự không phải chữ cái, số, dấu gạch ngang
+            .replace(/\-\-+/g, '-')         // Thay thế nhiều dấu gạch ngang liên tiếp bằng một dấu gạch ngang
+            .replace(/^-+/, '')             // Loại bỏ dấu gạch ngang ở đầu chuỗi
+            .replace(/-+$/, '');            // Loại bỏ dấu gạch ngang ở cuối chuỗi
+    }
+</script>
