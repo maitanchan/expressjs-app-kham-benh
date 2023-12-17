@@ -64,9 +64,27 @@ $(function () {
             $("#retype_password").get(0).reportValidity();
         }
     });
-    var table = $('#example').DataTable({
-        lengthChange: false,
-        buttons: ['copy', 'excel', 'pdf', 'colvis'],
+    $(document).ready(function () {
+        var table = $('#example').DataTable();
+
+        $('input:checkbox').on('change', function () {
+            //build a regex filter string with an or(|) condition
+            var positions = $('input:checkbox[name="pos"]:checked').map(function () {
+                return '^' + this.value + '$';
+            }).get().join('|');
+
+            //filter in column 1, with an regex, no smart filtering, not case sensitive
+            table.column(1).search(positions, true, false, false).draw(false);
+
+            //build a filter string with an or(|) condition
+            var offices = $('input:checkbox[name="ofc"]:checked').map(function () {
+                return this.value;
+            }).get().join('|');
+
+            //now filter in column 2, with no regex, no smart filtering, not case sensitive
+            table.column(2).search(offices, true, false, false).draw(false);
+
+        });
 
     });
 

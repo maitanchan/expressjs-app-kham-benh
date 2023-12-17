@@ -7,6 +7,7 @@ const sickM = require('./model/Sicks.m')
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
+const bodyParser = require('body-parser');
 //Use Session 
 app.set('trust proxy', 1)
 app.use(session({
@@ -113,7 +114,8 @@ app.use('/tai-khoan', ProfileRouter);
 app.use('/bac-si', DetailDoctorRouter);
 app.use('/tai-lieu', DocumentRouter);
 app.use('/chinh-sua', EditRouter);
-
+app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', async (req, res, next) => {
 
@@ -136,7 +138,6 @@ app.get('/', async (req, res, next) => {
         res.render('home', { display1: "d-block", display2: "d-none", doctors: doctors, role: role });
     }
 });
-
 
 app.all('*', function (req, res) {
     let role = "patient";

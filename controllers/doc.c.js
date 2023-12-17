@@ -90,7 +90,7 @@ exports.getSymtom = async (req, res, next) => {
 
     try {
 
-        res.render('symtom', { display1: "d-none", display2: "d-block", role: role });
+        res.render('symptom', { display1: "d-none", display2: "d-block", role: role });
 
     } catch (err) {
 
