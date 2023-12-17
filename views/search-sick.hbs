@@ -18,25 +18,14 @@
     <h3 class="text-center mt-2"><b>Danh sách bệnh lý</b></h3>
 
      <div class="container">
-{{!-- 
-         <hr>
-        <input type="checkbox" name="pos" value="Da vàng, Nước tiểu đậm màu, Mắt đỏ, Bong da, Bụi bạc trên da">Da vàng
-        <input type="checkbox" name="pos" value="Da vàng, Nước tiểu đậm màu, Mắt đỏ, Bong da, Bụi bạc trên da">Nước tiểu đậm màu
-       <input type="checkbox" name="pos" value="Da vàng, Nước tiểu đậm màu, Mắt đỏ, Bong da, Bụi bạc trên da">Mắt đỏ
-        <input type="checkbox" name="pos" value="Da vàng, Nước tiểu đậm màu, Mắt đỏ, Bong da, Bụi bạc trên da">Bong da
-      </div>
-      <hr>
-        <input type="checkbox" name="pos" value="Đường huyết không đều, Đau thận, Khó chịu ở bàng quang, Mùi nước tiểu khó chịu, Cảm giác tiểu tiện liên tục, Chảy khí">Đau thận
-         <input type="checkbox" name="pos" value="Đường huyết không đều, Đau thận, Khó chịu ở bàng quang, Mùi nước tiểu khó chịu, Cảm giác tiểu tiện liên tục, Chảy khí">Đau thận
-       
-      </div>
-      <hr> --}}
 
-      
                             <div class="nav-item dropdown me-2">
+
+                                {{#ifEquals role "patient"}}
                                  <button class="btn  py-3 nav-link" data-bs-toggle="dropdown" aria-expanded="false" type="submit" data-bs-toggle="modal" data-bs-target="#add" style="margin-top: 20px;background-color:#1eb2c5;color:#fff;width:200px;border-radius:10px;margin-bottom: 20px">       
                                     Triệu chứng của bạn
                                  </button>
+                                 {{/ifEquals}}
                                 <a class=""  href="#"></a>
                                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" style="padding: 20px;width:1300px;box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;">
                                    
@@ -611,6 +600,9 @@
             <tr>
                 <th>Tên bệnh</th>
                 <th>Triệu chứng</th>
+                {{#ifEquals role "patient"}}
+                <th>Bác sĩ phụ trách</th>
+                {{/ifEquals}}
                 <th>Phương án </th>
                 {{#ifEquals role "doctor"}}
                 <th>Hành động</th>
@@ -627,6 +619,9 @@
             <tr>
                 <td>{{SickName}}</td>
                 <td>{{Symptom}}</td>
+               {{#ifEquals ../role "patient"}}
+                <td>{{DoctorSP}}</td>
+               {{/ifEquals}}
                 <td>{{Desc}}</td>
                
                 {{#ifEquals ../role "doctor"}}
@@ -724,11 +719,7 @@
             <div class="modal-body">
                 <form class="px-md-2" id="editServiceForm" action="/tai-lieu/them-benh-ly" method="POST">
                     {{!-- Drug name input --}}
-                     <div class="form-floating mb-4">
-                    <input type="text" id="ID" class="form-control" name="ID" value="" readonly />
-
-                    <label class="form-label" for="ID">Mã bệnh lý</label>
-                    </div>
+                  
                     <div class="form-floating mb-4">
                         <input type="text" id="SickName" class="form-control" name="SickName" value="" required />
 
@@ -743,6 +734,11 @@
                         <input type="text" id="Desc" class="form-control" name="Desc"
                             value="" required />
                         <label class="form-label" for="Desc">Phương án xử lý</label>
+                    </div>
+                       <div class="form-floating mb-4" style="visibility: hidden;">
+                    <input type="text" id="ID" class="form-control" name="ID" value="" readonly />
+
+                    <label class="form-label" for="ID">Mã bệnh lý</label>
                     </div>
                   
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
@@ -871,3 +867,27 @@ tbody td:hover:before {
 
 </style>
 
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    // Sử dụng jQuery để xử lý sự kiện khi nhập liệu vào trường Tên bệnh lý
+    $(document).ready(function () {
+        $('#SickName').on('input', function () {
+            // Lấy giá trị từ trường Tên bệnh lý
+            var sickNameValue = $(this).val();
+            
+            // Chuyển đổi giá trị thành slug và cập nhật trường Mã bệnh lý
+            var slugValue = slugify(sickNameValue);
+            $('#ID').val(slugValue);
+        });
+    });
+
+    // Hàm chuyển đổi chuỗi thành slug
+    function slugify(text) {
+        return text.toString().toLowerCase()
+            .replace(/\s+/g, '-')           // Thay thế khoảng trắng bằng dấu gạch ngang
+            .replace(/[^\w\-]+/g, '')       // Xóa các ký tự không phải chữ cái, số, dấu gạch ngang
+            .replace(/\-\-+/g, '-')         // Thay thế nhiều dấu gạch ngang liên tiếp bằng một dấu gạch ngang
+            .replace(/^-+/, '')             // Loại bỏ dấu gạch ngang ở đầu chuỗi
+            .replace(/-+$/, '');            // Loại bỏ dấu gạch ngang ở cuối chuỗi
+    }
+</script>
