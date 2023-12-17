@@ -64,6 +64,42 @@ exports.createInvoice = async (req, res, next) => {
     }
 }
 
+exports.getSymtom = async (req, res, next) => {
+
+    let role = "patient";
+
+    if (req.session.Doctor) {
+
+        role = "doctor";
+
+    }
+
+    if (req.session.Doctor) {
+
+        if (req.session.Username) {
+
+            return res.render('error', { display1: "d-none", display2: "d-block", role: role });
+
+        } else {
+
+            return res.render('error', { display1: "d-block", display2: "d-none", role: role });
+
+        }
+
+    }
+
+    try {
+
+        res.render('symtom', { display1: "d-none", display2: "d-block", role: role });
+
+    } catch (err) {
+
+        next(err);
+
+    }
+
+}
+
 exports.UpdateInvoice = async (req, res, next) => {
 
     const data = req.body;

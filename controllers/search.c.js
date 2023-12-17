@@ -37,6 +37,7 @@ exports.viewAllDrugs = async (req, res, next) => {
 
 }
 
+
 exports.viewAllDoctors = async (req, res, next) => {
 
     try {

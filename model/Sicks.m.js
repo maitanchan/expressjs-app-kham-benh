@@ -26,5 +26,9 @@ module.exports = {
     },
     delete: async (ID) => {
         await db.collection('Sicks').deleteOne({ ID: ID });
-    }
+    },
+    getBySymptoms: async (symptoms) => {
+        const rs = await db.collection('Sicks').find({ Symptom: { $in: symptoms } }).toArray();
+        return rs;
+    },
 }

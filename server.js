@@ -3,10 +3,10 @@ const hbs = require('express-handlebars');
 const express = require('express');
 const session = require('express-session');
 const { urlencoded } = require('express');
+const sickM = require('./model/Sicks.m')
 const path = require('path');
 const app = express();
 const port = process.env.PORT || 3000;
-
 //Use Session 
 app.set('trust proxy', 1)
 app.use(session({
