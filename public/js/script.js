@@ -653,7 +653,6 @@ function autoGenerate1() {
 }
 
 
-// Dictionary với key là symptoms và value là tên hiển thị tiếng Việt
 const symptomsDictionary = {
     "itching": "Ngứa",
     "skin_rash": "Nổi mẩn",
@@ -789,10 +788,6 @@ const symptomsDictionary = {
     "yellow_crust_ooze": "Chất nhầy màu vàng",
 };
 
-// In ra dictionary
-console.log(symptomsDictionary);
-
-
 document.querySelector('.dropdown-menu').addEventListener('click', function (event) {
     event.stopPropagation();
 });
@@ -809,7 +804,7 @@ $(document).ready(function () {
 
         });
 
-        if (selectedSymptoms.length >= 10) {
+        if (selectedSymptoms.length > 0) {
 
             var apiUrl = "http://localhost:20454/tai-lieu/callExternalApi?symptoms=" + selectedSymptoms.join(",");
 
@@ -817,31 +812,49 @@ $(document).ready(function () {
 
                 console.log(data);
 
-                var diseasesList = $("#predictedDiseasesList");
+                var diseasesTable = $("#predictedDiseasesTable tbody");
 
-                diseasesList.empty();
+                diseasesTable.empty();
 
                 $.each(data.certain_predicted_diseases, function (index, disease) {
 
-                    diseasesList.append("<li>" + disease + "</li>");
+                    var detailApiUrl = "http://localhost:20454/tai-lieu/sicks/" + encodeURIComponent(disease);
+
+                    $.get(detailApiUrl, function (detailData) {
+
+                        console.log(detailData);
+
+                        diseasesTable.append(
+                            "<tr>" +
+                            "<td>" + detailData.SickName + "</td>" +
+                            "<td>" + detailData.Symptom + "</td>" +
+                            "<td>" + detailData.Desc + "</td>" +
+                            "<td>" + detailData.DoctorSP + "</td>" +
+                            "</tr>"
+                        );
+
+                    });
 
                 });
 
+                $("#resultContainer").show();
+
+                $("html, body").animate({ scrollTop: 0 }, 0);
+
             });
-
-            $("#resultContainer").show();
-
-            $("html, body").animate({ scrollTop: 0 }, 0);
 
         } else {
 
-            alert("Vui lòng chọn ít nhất 10 triệu chứng.");
+            alert("Vui lòng chọn ít nhất một triệu chứng.");
 
             $("html, body").animate({ scrollTop: 0 }, 0);
+
         }
 
     });
 
 });
+
+
 
 

@@ -31,4 +31,9 @@ module.exports = {
         const rs = await db.collection('Sicks').find({ Symptom: { $in: symptoms } }).toArray();
         return rs;
     },
+    getBySickName: async (partialName) => {
+        const regex = new RegExp(partialName, 'i');
+        const rs = await db.collection('Sicks').findOne({ SickName: { $regex: regex } });
+        return rs;
+    },
 }

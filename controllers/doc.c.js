@@ -13,6 +13,7 @@ const axios = require('axios');
 exports.callApi = async (req, res, next) => {
 
     try {
+
         const symptoms = req.query.symptoms;
 
         if (!symptoms) {
@@ -36,6 +37,25 @@ exports.callApi = async (req, res, next) => {
     }
 
 }
+
+exports.viewSicksBySickName = async (req, res, next) => {
+    try {
+        const partialName = req.params.partialName;
+
+        const rs = await SicksM.getBySickName(partialName);
+
+        let role = "patient";
+
+        if (req.session.Doctor) {
+            role = "doctor";
+        }
+
+        res.json(rs);
+
+    } catch (err) {
+        next(err);
+    }
+};
 
 exports.createInvoice = async (req, res, next) => {
 

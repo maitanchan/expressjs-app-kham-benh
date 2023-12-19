@@ -17,10 +17,23 @@
                        Triệu chứng của bạn
                     </button>
                     {{/ifEquals}}
-                <div id="resultContainer">
-                  <h3>Kết quả dự đoán:</h3>
-                  <ul id="predictedDiseasesList">  </ul>
-               </div>
+
+                    <div id="resultContainer">
+                        <h3>Kết quả dự đoán:</h3>
+                        <table id="predictedDiseasesTable">
+                            <thead>
+                                <tr>
+                                    <th>Tên bệnh</th>
+                                    <th>Triệu chứng</th>
+                                    <th>Phương án xử lý</th>
+                                    <th>Bác sĩ phụ trách</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+
+ 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" style="padding: 20px;width:1300px;box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;">
              
                 <div style="display: flex; column-gap:20px">
@@ -1789,5 +1802,22 @@
  #resultContainer {
      display: none;
 }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
 </style>
 

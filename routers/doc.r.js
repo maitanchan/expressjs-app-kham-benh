@@ -22,4 +22,5 @@ router.post('/bao-cao-thuoc', docC.postDrugReport);
 router.get('/xem-bao-cao-thuoc', docC.viewAllDrugReports);
 router.get('/ho-so-benh-an/:ID', docC.viewRecordDetail);
 router.get('/callExternalApi', docC.callApi);
+router.get('/sicks/:partialName', docC.viewSicksBySickName);
 module.exports = router;
