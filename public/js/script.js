@@ -1557,7 +1557,7 @@ $(document).ready(function () {
 
                         diseasesTable.append(
                             "<tr>" +
-                            "<td>" + detailData.Sick + "</td>" +
+                            "<td>" + disease + "</td>" +
                             "<td>" + detailData.Name + "</td>" +
                             "<td>" + detailData.Title + "</td>" +
                             "<td>" + detailData.Specialist + "</td>" +
