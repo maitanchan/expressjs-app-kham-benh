@@ -1531,7 +1531,7 @@ $(document).ready(function () {
 
         });
 
-        if (selectedSymptoms.length > 0) {
+        if (selectedSymptoms.length > 10) {
 
             var apiUrl = "http://localhost:20454/tai-lieu/callExternalApi?symptoms=" + selectedSymptoms.join(",");
 
@@ -1579,7 +1579,7 @@ $(document).ready(function () {
 
         } else {
 
-            alert("Vui lòng chọn ít nhất một triệu chứng.");
+            alert("Vui lòng chọn ít nhất 10 triệu chứng.");
 
             $("html, body").animate({ scrollTop: 0 }, 0);
 
