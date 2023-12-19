@@ -792,3 +792,56 @@ const symptomsDictionary = {
 // In ra dictionary
 console.log(symptomsDictionary);
 
+
+document.querySelector('.dropdown-menu').addEventListener('click', function (event) {
+    event.stopPropagation();
+});
+
+$(document).ready(function () {
+
+    $("#submitBtn").click(function () {
+
+        var selectedSymptoms = [];
+
+        $("input[name='checkbox']:checked").each(function () {
+
+            selectedSymptoms.push($(this).val());
+
+        });
+
+        if (selectedSymptoms.length >= 10) {
+
+            var apiUrl = "http://localhost:20454/tai-lieu/callExternalApi?symptoms=" + selectedSymptoms.join(",");
+
+            $.get(apiUrl, function (data) {
+
+                console.log(data);
+
+                var diseasesList = $("#predictedDiseasesList");
+
+                diseasesList.empty();
+
+                $.each(data.certain_predicted_diseases, function (index, disease) {
+
+                    diseasesList.append("<li>" + disease + "</li>");
+
+                });
+
+            });
+
+            $("#resultContainer").show();
+
+            $("html, body").animate({ scrollTop: 0 }, 0);
+
+        } else {
+
+            alert("Vui lòng chọn ít nhất 10 triệu chứng.");
+
+            $("html, body").animate({ scrollTop: 0 }, 0);
+        }
+
+    });
+
+});
+
+

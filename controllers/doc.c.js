@@ -8,6 +8,34 @@ const AppointmentM = require('../model/Appointment.m');
 const PatientsInDayM = require('../model/PatientsInDay.m');
 const RevenueM = require('../model/Revenue.m');
 const DrugReportM = require('../model/Drug-Report.m');
+const axios = require('axios');
+
+exports.callApi = async (req, res, next) => {
+
+    try {
+        const symptoms = req.query.symptoms;
+
+        if (!symptoms) {
+            return res.status(400).json({ error: 'Symptoms parameter is missing.' });
+        }
+
+        const apiUrl = `https://5a25-116-104-181-163.ngrok-free.app/predict_diseases?symptoms=${symptoms}`;
+
+        const response = await axios.get(apiUrl);
+
+        const dataFromExternalApi = response.data;
+
+        return res.json(dataFromExternalApi);
+
+    } catch (error) {
+
+        console.error('Error calling external API:', error);
+
+        return res.status(500).json({ error: 'Internal Server Error' });
+
+    }
+
+}
 
 exports.createInvoice = async (req, res, next) => {
 
