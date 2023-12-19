@@ -42,7 +42,7 @@ exports.viewSicksBySickName = async (req, res, next) => {
     try {
         const partialName = req.params.partialName;
 
-        const rs = await SicksM.getBySickName(partialName);
+        const rs = await DoctorsM.getBySickName(partialName);
 
         let role = "patient";
 

@@ -34,5 +34,10 @@ module.exports = {
     },
     delete: async (ID) => {
         await db.collection('Doctors').deleteOne({ ID: ID });
-    }
+    },
+    getBySickName: async (partialName) => {
+        const regex = new RegExp(partialName, 'i');
+        const rs = await db.collection('Doctors').findOne({ Sick: { $regex: regex } });
+        return rs;
+    },
 }

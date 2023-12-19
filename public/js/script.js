@@ -818,6 +818,8 @@ $(document).ready(function () {
 
                 $.each(data.certain_predicted_diseases, function (index, disease) {
 
+                    // diseasesTable.append(disease + "<br>")
+
                     var detailApiUrl = "http://localhost:20454/tai-lieu/sicks/" + encodeURIComponent(disease);
 
                     $.get(detailApiUrl, function (detailData) {
@@ -826,10 +828,11 @@ $(document).ready(function () {
 
                         diseasesTable.append(
                             "<tr>" +
-                            "<td>" + detailData.SickName + "</td>" +
-                            "<td>" + detailData.Symptom + "</td>" +
-                            "<td>" + detailData.Desc + "</td>" +
-                            "<td>" + detailData.DoctorSP + "</td>" +
+                            "<td>" + detailData.Sick + "</td>" +
+                            "<td>" + detailData.Name + "</td>" +
+                            "<td>" + detailData.Title + "</td>" +
+                            "<td>" + detailData.Specialist + "</td>" +
+                            "<td>" + detailData.Phone + "</td>" +
                             "</tr>"
                         );
 
