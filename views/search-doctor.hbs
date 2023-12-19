@@ -94,15 +94,16 @@
                         <label style="margin-bottom: 50px; margin-left:80px" class="form-check-label text-black"
                             for="female">Nữ</label>
                     </div>
+                              <label class="form-label" for="Name{{ID}}">Tên bệnh lý</label>
+
                     <div class="form-floating mb-4">
-           
-                              <select class="form-select "  name="Sick"  required>
+
+                              <select class="form-select " style="height: 200px;"   name="Sick" id="multiple-select"  required multiple>
                                  <option value="">{{ Sick }}</option>
                                   {{#each ../sicks}}
                                   <option  value="{{SickName}}">{{SickName}}</option>
                                   {{/each}}
                               </select>
-                              <label class="form-label" for="Name{{ID}}">Tên bệnh lý</label>
                     </div>
 
                     <div class="form-floating mb-4">
@@ -191,14 +192,13 @@
                             for="female">Nữ</label>
                     </div>
 
+                             <label class="form-label" for="Name{{ID}}">Tên bệnh lý</label>
                      <div class="form-floating mb-4">
-           
-                              <select class="form-select "  name="Sick" required >
+                              <select class="form-select " style="height: 200px;"  name="Sick" required  multiple>
                                   {{#each sicks}}
                                    <option value='{"ID":"{{ID}}", "SickName":"{{SickName}}"}'>{{SickName}}</option>
                                   {{/each}}
                               </select>
-                              <label class="form-label" for="Name{{ID}}">Tên bệnh lý</label>
                     </div>
 
                     <div class="form-floating mb-4">
@@ -283,6 +283,8 @@ tbody td:hover:before {
   background-color: rgba(255, 255, 255, 0.2);
   z-index: -1;
 }
+
+
 
 </style>
 
