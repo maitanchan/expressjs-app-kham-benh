@@ -600,9 +600,7 @@
             <tr>
                 <th>Tên bệnh</th>
                 <th>Triệu chứng</th>
-                {{#ifEquals role "patient"}}
-                <th>Bác sĩ phụ trách</th>
-                {{/ifEquals}}
+              
                 <th>Phương án </th>
                 {{#ifEquals role "doctor"}}
                 <th>Hành động</th>
@@ -619,9 +617,6 @@
             <tr>
                 <td>{{SickName}}</td>
                 <td>{{Symptom}}</td>
-               {{#ifEquals ../role "patient"}}
-                <td>{{DoctorSP}}</td>
-               {{/ifEquals}}
                 <td>{{Desc}}</td>
                
                 {{#ifEquals ../role "doctor"}}

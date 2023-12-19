@@ -820,6 +820,8 @@ $(document).ready(function () {
 
                     // diseasesTable.append(disease + "<br>")
 
+                    console.log(disease)
+
                     var detailApiUrl = "http://localhost:20454/tai-lieu/sicks/" + encodeURIComponent(disease);
 
                     $.get(detailApiUrl, function (detailData) {
@@ -843,6 +845,8 @@ $(document).ready(function () {
                 $("#resultContainer").show();
 
                 $("html, body").animate({ scrollTop: 0 }, 0);
+
+
 
             });
 
