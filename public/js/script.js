@@ -1531,7 +1531,7 @@ $(document).ready(function () {
 
         });
 
-        if (selectedSymptoms.length > 10) {
+        if (selectedSymptoms.length >= 10) {
 
             var apiUrl = "http://localhost:20454/tai-lieu/callExternalApi?symptoms=" + selectedSymptoms.join(",");
 
